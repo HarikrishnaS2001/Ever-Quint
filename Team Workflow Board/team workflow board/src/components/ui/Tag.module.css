@@ -1,0 +1,134 @@
+.tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  border-radius: 9999px;
+  font-weight: 500;
+  white-space: nowrap;
+  user-select: none;
+}
+
+.content {
+  flex: 1;
+}
+
+.removeButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+  border-radius: 50%;
+  padding: 0.125rem;
+  transition: all 0.15s ease-in-out;
+  opacity: 0.7;
+}
+
+.removeButton:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+.removeButton:focus {
+  outline: 2px solid currentColor;
+  outline-offset: 1px;
+}
+
+/* Sizes */
+.sm {
+  padding: 0.125rem 0.5rem;
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.md {
+  padding: 0.25rem 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+}
+
+/* Variants */
+.default {
+  border: 1px solid currentColor;
+}
+
+.priority {
+  border: none;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+.status {
+  border: none;
+  font-weight: 500;
+}
+
+/* Colors */
+.blue {
+  background-color: #dbeafe;
+  color: #1d4ed8;
+}
+
+.green {
+  background-color: #d1fae5;
+  color: #065f46;
+}
+
+.yellow {
+  background-color: #fef3c7;
+  color: #92400e;
+}
+
+.red {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+.purple {
+  background-color: #e9d5ff;
+  color: #6b21a8;
+}
+
+.gray {
+  background-color: #f3f4f6;
+  color: #374151;
+}
+
+/* Color variants for different tag types */
+.default.blue {
+  background-color: transparent;
+  color: #3b82f6;
+  border-color: #3b82f6;
+}
+
+.default.green {
+  background-color: transparent;
+  color: #10b981;
+  border-color: #10b981;
+}
+
+.default.yellow {
+  background-color: transparent;
+  color: #f59e0b;
+  border-color: #f59e0b;
+}
+
+.default.red {
+  background-color: transparent;
+  color: #ef4444;
+  border-color: #ef4444;
+}
+
+.default.purple {
+  background-color: transparent;
+  color: #8b5cf6;
+  border-color: #8b5cf6;
+}
+
+.default.gray {
+  background-color: transparent;
+  color: #6b7280;
+  border-color: #6b7280;
+}

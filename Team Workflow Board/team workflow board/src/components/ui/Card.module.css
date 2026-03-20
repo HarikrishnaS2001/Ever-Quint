@@ -1,0 +1,81 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  border-radius: 0.5rem;
+  transition: all 0.2s ease-in-out;
+  position: relative;
+}
+
+/* Variants */
+.default {
+  border: 1px solid #e5e7eb;
+}
+
+.elevated {
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+}
+
+.outlined {
+  border: 2px solid #e5e7eb;
+}
+
+/* Padding variants */
+.padding-none {
+  padding: 0;
+}
+
+.padding-sm {
+  padding: 0.75rem;
+}
+
+.padding-md {
+  padding: 1rem;
+}
+
+.padding-lg {
+  padding: 1.5rem;
+}
+
+/* Interactive states */
+.clickable {
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  border: none;
+  background: inherit;
+  font: inherit;
+}
+
+.clickable:hover {
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  transform: translateY(-1px);
+}
+
+.clickable:focus {
+  outline: 2px solid #3b82f6;
+  outline-offset: 2px;
+}
+
+.clickable:active {
+  transform: translateY(0);
+}
+
+/* Draggable state */
+.draggable {
+  cursor: grab;
+}
+
+.draggable:active {
+  cursor: grabbing;
+}
+
+/* Special modifiers */
+.card:hover.elevated {
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+}
+
+.card.outlined:hover {
+  border-color: #d1d5db;
+}

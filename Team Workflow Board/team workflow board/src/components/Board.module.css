@@ -1,0 +1,135 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: #f8fafc;
+  padding: 1.5rem;
+  gap: 1.5rem;
+}
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1.5rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+}
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+.title {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #111827;
+  margin: 0;
+}
+.stats {
+  display: flex;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+}
+.stat {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+.actions {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-shrink: 0;
+}
+.filters {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  padding: 1rem 2rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  gap: 1rem;
+}
+.filterGroup {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex: 1;
+}
+.filterGroup > :first-child {
+  flex: 1;
+  max-width: 320px;
+}
+.board {
+  display: flex;
+  gap: 1.5rem;
+  flex: 1;
+  overflow-x: auto;
+  padding: 0.5rem 0;
+  align-items: flex-start;
+}
+.dragOverlay {
+  transform: rotate(5deg);
+  opacity: 0.8;
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2);
+} /* Responsive design */
+@media (max-width: 1024px) {
+  .container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+  .header {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1rem;
+  }
+  .titleSection {
+    width: 100%;
+  }
+  .actions {
+    width: 100%;
+    justify-content: flex-end;
+  }
+  .filters {
+    padding: 1rem 1.5rem;
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filterGroup {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .filterGroup > :first-child {
+    max-width: none;
+  }
+}
+@media (max-width: 768px) {
+  .container {
+    padding: 0.5rem;
+  }
+  .header {
+    padding: 1rem;
+  }
+  .title {
+    font-size: 1.5rem;
+  }
+  .stats {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .board {
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .filters {
+    padding: 1rem;
+  }
+}
