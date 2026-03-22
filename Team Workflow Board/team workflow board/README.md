@@ -1,73 +1,80 @@
-# React + TypeScript + Vite
+# Team Workflow Board
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern, accessible React application for managing team tasks with a Kanban-style interface. Built with TypeScript, Vite, and a custom component library.
 
-Currently, two official plugins are available:
+## Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+### Core Functionality
+- **Kanban Board Interface**: Three-column layout (Backlog, In Progress, Done)
+- **Task Management**: Create, edit, delete, and reorder tasks
+- **Drag & Drop**: Move tasks between columns and reorder within columns
+- **Task Filtering**: Search by text, filter by status, priority, assignee, and tags
+- **Task Sorting**: Sort by creation date, priority, assignee, or title
+- **Local Storage**: Persistent data with schema versioning and migration support
 
-## React Compiler
+### Task Model
+Each task includes:
+- **id**: Unique identifier (UUID)
+- **title**: Short descriptive title (max 100 characters)
+- **description**: Detailed description (max 500 characters) 
+- **status**: Backlog | In Progress | Done
+- **priority**: Low | Medium | High
+- **assignee**: Person responsible for the task
+- **tags**: Array of string labels
+- **createdAt/updatedAt**: Timestamps for tracking
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Component Library
+Reusable, accessible components:
+- **Button**: Multiple variants and sizes with loading states
+- **TextInput**: Text and textarea with validation and error states
+- **Select**: Dropdown with keyboard navigation
+- **Modal**: Accessible dialog with focus management
+- **Tag**: Removable badges with priority/status colors
+- **Card**: Flexible content containers
+- **Toast**: Ephemeral notifications with auto-dismiss
 
-## Expanding the ESLint configuration
+### Accessibility Features
+- **Keyboard Navigation**: All interactions work with keyboard only
+- **Focus Management**: Logical tab order and focus indicators
+- **Error Handling**: Clear validation messages
+- **Loading States**: Visual feedback for async operations
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## Getting Started
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+### Prerequisites
+- Node.js 20.19+ or 22.12+
+- npm 10+
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### Installation
+1. Clone the repository
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+### Development
+1. Start the development server:
+   ```bash
+   npm run dev
+   ```
+2. Open http://localhost:5173 in your browser
+
+### Linting
+```bash
+npm run lint
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Architecture
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### State Management
+- **React Context + useReducer**: Centralized state management
+- **Local Storage**: Persistent data with schema versioning
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+### Component Design
+- **CSS Modules**: Scoped styling without runtime dependencies
+- **Composition over Inheritance**: Flexible, reusable components
+- **Accessibility First**: WCAG 2.1 AA compliance
+
+## Tech Stack
+React 19 • TypeScript 5 • Vite 8 • @dnd-kit • date-fns • UUID
+
