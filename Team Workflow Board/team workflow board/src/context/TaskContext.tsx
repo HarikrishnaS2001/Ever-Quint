@@ -13,6 +13,7 @@ import {
   updateTask,
   deleteTask,
 } from "../utils/taskStorage";
+import { v4 as uuidv4 } from "uuid";
 
 interface TaskProviderProps {
   children: ReactNode;
@@ -51,7 +52,12 @@ interface TaskContextType {
     updateTask: (id: string, updates: Omit<UpdateTaskInput, "id">) => void;
     deleteTask: (id: string) => void;
     reorderTasks: (tasks: Task[]) => void;
-    // showToast todo
+    showToast: (
+      message: string,
+      type?: ToastMessage["type"],
+      duration?: number,
+    ) => void;
+    removeToast: (id: string) => void;
   };
 }
 
@@ -119,6 +125,24 @@ const taskReducer = (state: TaskState, action: TaskAction): TaskState => {
 export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(taskReducer, initialState);
 
+  const showToast = (
+    message: string,
+    type: ToastMessage["type"] = "info",
+    duration = 4000,
+  ) => {
+    const toast: ToastMessage = {
+      id: uuidv4(),
+      message,
+      type,
+      duration,
+    };
+    dispatch({ type: "ADD_TOAST", payload: toast });
+  };
+
+  const removeToast = (id: string) => {
+    dispatch({ type: "REMOVE_TOAST", payload: id });
+  };
+
   const addTask = (input: CreateTaskInput) => {
     try {
       const newTask = createTask(input);
@@ -127,9 +151,9 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       const updatedTasks = [...state.tasks, newTask];
       saveTasksToStorage(updatedTasks);
     } catch (error) {
-      //   const errorMessage =
-      //     error instanceof Error ? error.message : "Failed to create task";
-      console.log("Error creating task:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to create task";
+      showToast(errorMessage, "error");
     }
   };
 
@@ -150,12 +174,11 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
         task.id === id ? updatedTask : task,
       );
       saveTasksToStorage(updatedTasks);
+      showToast("Task updated successfully", "success");
     } catch (error) {
-      // const errorMessage =
-      //   error instanceof Error ? error.message : "Failed to update task";
-      // show toast.
-
-      console.log("Error updating task:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to update task";
+      showToast(errorMessage, "error");
     }
   };
 
@@ -165,12 +188,11 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
 
       const updatedTasks = deleteTask(state.tasks, id);
       saveTasksToStorage(updatedTasks);
-      // showToast("Task deleted successfully", "success");
+      showToast("Task deleted successfully", "success");
     } catch (error) {
-      // const errorMessage =
-      //   error instanceof Error ? error.message : "Failed to delete task";
-      // showToast(errorMessage, "error");
-      console.log("Error deleting task:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to delete task";
+      showToast(errorMessage, "error");
     }
   };
 
@@ -179,10 +201,9 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       dispatch({ type: "REORDER_TASKS", payload: tasks });
       saveTasksToStorage(tasks);
     } catch (error) {
-      // const errorMessage =
-      //   error instanceof Error ? error.message : "Failed to save task order";
-      // showToast(errorMessage, "error");
-      console.log("Error saving task order:", error);
+      const errorMessage =
+        error instanceof Error ? error.message : "Failed to save task order";
+      showToast(errorMessage, "error");
     }
   };
 
@@ -195,7 +216,7 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
       const errorMessage =
         error instanceof Error ? error.message : "Failed to load tasks";
       dispatch({ type: "SET_ERROR", payload: errorMessage });
-      // showToast('Failed to load tasks', 'error');
+      showToast("Failed to load tasks", "error");
     }
   };
 
@@ -210,7 +231,8 @@ export const TaskProvider: React.FC<TaskProviderProps> = ({ children }) => {
     updateTask: updateTaskAction,
     deleteTask: deleteTaskAction,
     reorderTasks,
-    // showToast, todo
+    showToast,
+    removeToast,
   };
 
   return (

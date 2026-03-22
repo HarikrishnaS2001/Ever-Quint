@@ -12,7 +12,7 @@ import { useTaskFilters, useDragAndDrop } from "../hooks";
 import { Column } from "./Column";
 import { TaskCard } from "./TaskCard";
 import { TaskForm } from "./TaskForm";
-import { Button, TextInput } from "./ui";
+import { ToastContainer, Button, TextInput } from "./ui";
 import type { Task, TaskStatus } from "../types";
 import { getTaskStatistics } from "../utils/taskFilters";
 import styles from "./Board.module.css";
@@ -62,7 +62,9 @@ export const Board: React.FC = () => {
   };
 
   const getTasksByStatus = (status: TaskStatus) => {
-    return filteredTasks.filter((task: { status: string; }) => task.status === status);
+    return filteredTasks.filter(
+      (task: { status: string }) => task.status === status,
+    );
   };
 
   const handleAddTask = () => {
@@ -168,7 +170,7 @@ export const Board: React.FC = () => {
           title={editingTask ? "Edit Task" : "Create New Task"}
         />
 
-        {/* toast functionality must be added ::: todo*/}
+        <ToastContainer toasts={state.toasts} onRemove={actions.removeToast} />
       </div>
     </DndContext>
   );
