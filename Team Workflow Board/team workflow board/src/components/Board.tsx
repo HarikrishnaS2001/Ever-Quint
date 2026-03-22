@@ -12,8 +12,8 @@ import { useTaskFilters, useDragAndDrop } from "../hooks";
 import { Column } from "./Column";
 import { TaskCard } from "./TaskCard";
 import { TaskForm } from "./TaskForm";
-import { ToastContainer, Button, TextInput } from "./ui";
-import type { Task, TaskStatus } from "../types";
+import { ToastContainer, Button, TextInput, Select } from "./ui";
+import type { Task, TaskStatus, TaskPriority } from "../types";
 import { getTaskStatistics } from "../utils/taskFilters";
 import styles from "./Board.module.css";
 
@@ -130,13 +130,31 @@ export const Board: React.FC = () => {
               value={filters.search || ""}
               onChange={(value) => updateFilter("search", value)}
             />
+          </div>
 
-            {hasActiveFilters && (
+          <div className={styles.filterGroup}>
+            <Select
+              placeholder="Filter by priority"
+              value={filters.priority?.[0] || ""}
+              onChange={(value) => {
+                updateFilter("priority", value ? [value as TaskPriority] : []);
+              }}
+              options={[
+                { value: "", label: "All Priorities" },
+                { value: "High", label: " High Priority" },
+                { value: "Medium", label: " Medium Priority" },
+                { value: "Low", label: " Low Priority" },
+              ]}
+            />
+          </div>
+
+          {hasActiveFilters && (
+            <div className={styles.filterGroup}>
               <Button variant="secondary" size="sm" onClick={clearFilters}>
                 Clear Filters
               </Button>
-            )}
-          </div>
+            </div>
+          )}
         </div>
 
         <div className={styles.board}>
