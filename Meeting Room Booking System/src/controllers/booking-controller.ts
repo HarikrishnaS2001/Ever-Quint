@@ -65,6 +65,7 @@ export class BookingController {
         });
       } else if (
         error.message.includes("working hours") ||
+        error.message.includes("Bookings only allowed") ||
         error.message.includes("overlapping") ||
         error.message.includes("duration")
       ) {

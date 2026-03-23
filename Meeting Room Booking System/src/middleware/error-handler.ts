@@ -23,6 +23,19 @@ export function errorHandler(
     return next(error);
   }
 
+  // Handle JSON parsing errors from body-parser
+  if (
+    error instanceof SyntaxError &&
+    "body" in error &&
+    error.message.includes("JSON")
+  ) {
+    res.status(HTTP_STATUS.BAD_REQUEST).json({
+      error: "ValidationError",
+      message: "Invalid JSON in request body",
+    });
+    return;
+  }
+
   res.status(HTTP_STATUS.INTERNAL_SERVER_ERROR).json({
     error: "InternalServerError",
     message: "An unexpected error occurred",
