@@ -1,0 +1,390 @@
+{
+  "info": {
+    "_postman_id": "40adb8de-48f7-4f8e-ad8c-28cd6f7148e1",
+    "name": "Meeting room",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "38592042"
+  },
+  "item": [
+    {
+      "name": "rooms",
+      "item": [
+        {
+          "name": "create rooms",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Conference Room A\",\n    \"capacity\": 12,\n    \"floor\": 1,\n    \"amenities\": [\"WiFi\", \"Projector\", \"Whiteboard\"]\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/rooms",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "rooms"
+              ]
+            },
+            "description": "Generated from cURL: curl -X POST http://localhost:3000/rooms \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"name\": \"Conference Room A\",\n    \"capacity\": 12,\n    \"floor\": 1,\n    \"amenities\": [\"WiFi\", \"Projector\", \"Whiteboard\"]\n  }'"
+          },
+          "response": []
+        },
+        {
+          "name": "rooms 2",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Small Meeting Room\",\n    \"capacity\": 6,\n    \"floor\": 2,\n    \"amenities\": [\"WiFi\"]\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/rooms",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "rooms"
+              ]
+            },
+            "description": "Generated from cURL: curl -X POST http://localhost:3000/rooms \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"name\": \"Small Meeting Room\",\n    \"capacity\": 6,\n    \"floor\": 2,\n    \"amenities\": [\"WiFi\"]\n  }'"
+          },
+          "response": []
+        },
+        {
+          "name": "large room",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"name\": \"Executive Boardroom\",\n    \"capacity\": 20,\n    \"floor\": 3,\n    \"amenities\": [\"WiFi\", \"Projector\", \"Video Conferencing\", \"Catering\"]\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/rooms",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "rooms"
+              ]
+            },
+            "description": "Generated from cURL: curl -X POST http://localhost:3000/rooms \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"name\": \"Executive Boardroom\",\n    \"capacity\": 20,\n    \"floor\": 3,\n    \"amenities\": [\"WiFi\", \"Projector\", \"Video Conferencing\", \"Catering\"]\n  }'"
+          },
+          "response": []
+        },
+        {
+          "name": "get all rooms",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/rooms",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "rooms"
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET http://localhost:3000/rooms\n"
+          },
+          "response": []
+        },
+        {
+          "name": "filter room by amenity",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/rooms?amenity=Projector",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "rooms"
+              ],
+              "query": [
+                {
+                  "key": "amenity",
+                  "value": "Projector"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"http://localhost:3000/rooms?amenity=Projector\"\n"
+          },
+          "response": []
+        },
+        {
+          "name": "filter room by min capacity",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/rooms?minCapacity=10",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "rooms"
+              ],
+              "query": [
+                {
+                  "key": "minCapacity",
+                  "value": "10"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"http://localhost:3000/rooms?minCapacity=10\"\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "booking",
+      "item": [
+        {
+          "name": "Create booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"roomId\": \"{ROOM_ID}\",\n    \"title\": \"Team Standup\",\n    \"organizerEmail\": \"john.doe@company.com\",\n    \"startTime\": \"2024-03-25T09:00:00.000Z\",\n    \"endTime\": \"2024-03-25T09:30:00.000Z\"\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings"
+              ]
+            },
+            "description": "Generated from cURL: curl -X POST http://localhost:3000/bookings \\\n  -H \"Content-Type: application/json\" \\\n  -d '{\n    \"roomId\": \"{ROOM_ID}\",\n    \"title\": \"Team Standup\",\n    \"organizerEmail\": \"john.doe@company.com\",\n    \"startTime\": \"2024-03-25T09:00:00.000Z\",\n    \"endTime\": \"2024-03-25T09:30:00.000Z\"\n  }'"
+          },
+          "response": []
+        },
+        {
+          "name": "Idempotency-Key booking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "unique-meeting-123"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"roomId\": \"{ROOM_ID}\",\n    \"title\": \"Project Planning\",\n    \"organizerEmail\": \"jane.smith@company.com\",\n    \"startTime\": \"2024-03-25T14:00:00.000Z\",\n    \"endTime\": \"2024-03-25T16:00:00.000Z\"\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings"
+              ]
+            },
+            "description": "Generated from cURL: curl -X POST http://localhost:3000/bookings \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Idempotency-Key: unique-meeting-123\" \\\n  -d '{\n    \"roomId\": \"{ROOM_ID}\",\n    \"title\": \"Project Planning\",\n    \"organizerEmail\": \"jane.smith@company.com\",\n    \"startTime\": \"2024-03-25T14:00:00.000Z\",\n    \"endTime\": \"2024-03-25T16:00:00.000Z\"\n  }'\n"
+          },
+          "response": []
+        },
+        {
+          "name": "idempotency checking",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Idempotency-Key",
+                "value": "unique-meeting-123"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n    \"roomId\": \"{ROOM_ID}\",\n    \"title\": \"Project Planning\",\n    \"organizerEmail\": \"jane.smith@company.com\",\n    \"startTime\": \"2024-03-25T14:00:00.000Z\",\n    \"endTime\": \"2024-03-25T16:00:00.000Z\"\n  }",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            },
+            "url": {
+              "raw": "http://localhost:3000/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings"
+              ]
+            },
+            "description": "Generated from cURL: curl -X POST http://localhost:3000/bookings \\\n  -H \"Content-Type: application/json\" \\\n  -H \"Idempotency-Key: unique-meeting-123\" \\\n  -d '{\n    \"roomId\": \"{ROOM_ID}\",\n    \"title\": \"Project Planning\",\n    \"organizerEmail\": \"jane.smith@company.com\",\n    \"startTime\": \"2024-03-25T14:00:00.000Z\",\n    \"endTime\": \"2024-03-25T16:00:00.000Z\"\n  }'"
+          },
+          "response": []
+        },
+        {
+          "name": "get bookins",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/bookings",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings"
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET http://localhost:3000/bookings\n"
+          },
+          "response": []
+        },
+        {
+          "name": "pagination concept",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/bookings?limit=10&offset=0",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "bookings"
+              ],
+              "query": [
+                {
+                  "key": "limit",
+                  "value": "10"
+                },
+                {
+                  "key": "offset",
+                  "value": "0"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl \"http://localhost:3000/bookings?limit=10&offset=0\"\n"
+          },
+          "response": []
+        }
+      ]
+    },
+    {
+      "name": "report",
+      "item": [
+        {
+          "name": "report",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "http://localhost:3000/reports/room-utilization?from=2024-03-25T00:00:00.000Z&to=2024-03-25T23:59:59.999Z",
+              "protocol": "http",
+              "host": [
+                "localhost"
+              ],
+              "port": "3000",
+              "path": [
+                "reports",
+                "room-utilization"
+              ],
+              "query": [
+                {
+                  "key": "from",
+                  "value": "2024-03-25T00:00:00.000Z"
+                },
+                {
+                  "key": "to",
+                  "value": "2024-03-25T23:59:59.999Z"
+                }
+              ]
+            },
+            "description": "Generated from cURL: curl -X GET \"http://localhost:3000/reports/room-utilization?from=2024-03-25T00:00:00.000Z&to=2024-03-25T23:59:59.999Z\"\n"
+          },
+          "response": []
+        }
+      ]
+    }
+  ]
+}
